@@ -3,10 +3,12 @@ import React from 'react';
 
 class Form extends React.Component {
   state = {
-    message: {
+    message: [
+     { 
       userName: '',
-      userMessage: '',
-    },
+      userMessage: ''
+     }
+    ]
   };
   onClickSend = () => {
     const newMessage = {
@@ -18,11 +20,35 @@ class Form extends React.Component {
     this.setState({ message: messages });
   };
 
+  onChangeUserName = (event) => {
+    this.setState({userName: event.target.value});
+  };
+
+  onChangeUserMessage = (event) => {
+    this.setState({userMessage: event.target.value});
+  };
+
   render() {
+    const newMessagesArray = this.state.message.map((message) => {
+      return (
+        <p>
+          {message.userName}{message.userMessage}
+        </p>
+      )
+    });
     return (
       <div>
-        <input type="text" value={this.state.userName} placeholder={'User'} />
+        <div>
+          {newMessagesArray}
+        </div>
+        <input 
+          onChange={this.onChangeUserName}
+          type="text" 
+          value={this.state.userName} 
+          placeholder={'User'} 
+        />
         <input
+          onChange={this.onChangeUserMessage}
           type="text"
           value={this.state.userMessage}
           placeholder={'Message'}
