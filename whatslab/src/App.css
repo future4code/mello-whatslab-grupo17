@@ -1,0 +1,19 @@
+.App{
+  display: flex;
+  justify-content: center;
+}
+
+.App div {
+  height: 95vh;
+  border: 1px solid black;
+  width: 500px;
+}
+
+.App footer {
+  border: 1px solid black;
+  width: 500px;
+  height: 5vh;
+  position: fixed;
+  bottom: 0;
+}
+
